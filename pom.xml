@@ -14,7 +14,6 @@
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
-		<testSourceDirectory>test</testSourceDirectory>
 
 		<resources>
 			<!-- Static resources -->
@@ -142,6 +141,10 @@
 			<id>Lichtspiele</id>
 			<url>https://nexus.lichtspiele.org/repository/releases/</url>
 		</repository>
+			<repository>
+				<id>glaremasters repo</id>
+				<url>https://repo.glaremasters.me/repository/towny/</url>
+			</repository>
 
 	</repositories>
 
@@ -293,9 +296,8 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<!-- https://www.spigotmc.org/resources/towny-advanced.72694/history -->
-			<groupId>com.github.TownyAdvanced</groupId>
-			<artifactId>Towny</artifactId>
+			<groupId>com.palmergames.bukkit.towny</groupId>
+			<artifactId>towny</artifactId>
 			<version>0.100.0.0</version>
 			<scope>provided</scope>
 		</dependency>
