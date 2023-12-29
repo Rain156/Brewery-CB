@@ -236,8 +236,8 @@ public class BrewLore {
 	public void updateQualityStars(boolean qualityColor) {
 		updateQualityStars(qualityColor, false);
 	}
-
-
+	
+	
 	public void updateQualityStars(boolean qualityColor, boolean withBars) {
 		if (brew.isStripped()) return;
 		if (brew.hasRecipe() && brew.getCurrentRecipe().needsToAge() && brew.getAgeTime() < 0.5) {
@@ -245,9 +245,6 @@ public class BrewLore {
 		}
 		int quality = brew.getQuality();
 		if (quality > 0 && (qualityColor || BConfig.alwaysShowQuality)) {
-			int stars = quality / 2;
-			boolean half = quality % 2 > 0;
-			int noStars = 5 - stars - (half ? 1 : 0);
 			StringBuilder b = new StringBuilder(24);
 			String color;
 			if (qualityColor) {
@@ -258,22 +255,14 @@ public class BrewLore {
 			if (withBars) {
 				color = "§8[" + color;
 			}
-			for (; stars > 0; stars--) {
-				b.append("⭑");
+			
+			// 使用相同字符来表示星级
+			int stars = 1;  // 显示1颗星
+			for (int i = 0; i < stars; i++) {
+				b.append("CloudBerg");
 			}
-			if (half) {
-				if (!qualityColor) {
-					b.append("§8");
-				}
-				b.append("⭒");
-			}
+			
 			if (withBars) {
-				if (noStars > 0) {
-					b.append("§0");
-					for (; noStars > 0; noStars--) {
-						b.append("⭑");
-					}
-				}
 				b.append("§8]");
 			}
 			addOrReplaceLore(Type.STARS, color, b.toString());
@@ -281,6 +270,7 @@ public class BrewLore {
 			removeLore(Type.STARS);
 		}
 	}
+
 
 	public void updateAlc(boolean inDistiller) {
 		if (!brew.isUnlabeled() && (inDistiller || BConfig.alwaysShowAlc) && (!brew.hasRecipe() || brew.getCurrentRecipe().getAlcohol() != 0)) {
