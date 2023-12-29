@@ -287,20 +287,20 @@ public class BPlayer {
 		boolean half = quality % 2 > 0;
 		int noStars = 5 - stars - (half ? 1 : 0);
 
-		b.append("§7[").append(BrewLore.getQualityColor(quality));
+		b.append("§7").append(BrewLore.getQualityColor(quality));
 		for (; stars > 0; stars--) {
-			b.append("⭑");
+			b.append("§7");
 		}
 		if (half) {
-			b.append("⭒");
+			b.append("§0");
 		}
 		if (noStars > 0) {
 			b.append("§0");
 			for (; noStars > 0; noStars--) {
-				b.append("⭑");
+				b.append("§7");
 			}
 		}
-		b.append("§7]");
+		b.append("§7");
 		final String text = b.toString();
 		if (hangover && P.use1_11) {
 			P.p.getServer().getScheduler().scheduleSyncDelayedTask(P.p, () -> player.sendTitle("", text, 30, 100, 90), 160);
